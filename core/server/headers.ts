@@ -1,17 +1,20 @@
 import { IRequestHeaders } from '~/core/types'
+import { ParameterCollection } from '~/core/server/parameter-collection'
 
-export class Headers {
+export class Headers extends ParameterCollection<IRequestHeaders> {
   constructor (
-    private readonly headers: IRequestHeaders
-  ) {}
+    headers: IRequestHeaders
+  ) {
+    super(headers)
+  }
 
-  get (key: string) {
+  public get (key: string, defaultValue: any = null) {
     switch (key = key.toLowerCase()) {
       case 'referer':
       case 'referrer':
-        return this.headers.referrer || this.headers.referer || ''
+        return this.params.referrer || this.params.referer || ''
       default:
-        return this.headers[key] || ''
+        return this.params[key] || ''
     }
   }
 
