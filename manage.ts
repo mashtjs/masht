@@ -1,11 +1,15 @@
-import Router from './core/router/router'
+import Server from './core/server/server'
+import Request from './core/server/request'
 
 if (require.main === module) {
-  const router = new Router()
+  const server = new Server(
+    (req, res) => {
+      console.log(req.url)
+      console.log(new Request(req))
+    }, {
+      port: 8000
+    }
+  )
 
-  router.on('get', '/foo/bar/:ker', () => {})
-
-  const found = router.lookup('get', '/foo/bar/alex')
-
-  console.log(found)
+  server.start()
 }

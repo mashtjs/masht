@@ -11,7 +11,7 @@ export default class Server {
     private readonly serverOptions: {
       protocol?: 'http' | 'https'
       port?: number
-    }
+    } = {}
   ) {
     this._protocol = serverOptions.protocol || 'http'
 

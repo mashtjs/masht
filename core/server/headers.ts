@@ -1,5 +1,5 @@
-import { IRequestHeaders } from '~/core/types'
-import { ParameterCollection } from '~/core/server/parameter-collection'
+import { IRequestHeaders } from '../types'
+import { ParameterCollection } from '../server/parameter-collection'
 
 export class Headers extends ParameterCollection<IRequestHeaders> {
   constructor (

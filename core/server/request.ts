@@ -1,7 +1,7 @@
-import { IRequest } from '~/core/types'
+import { IRequest } from '../types'
 import { Headers } from './headers'
 import url from 'url'
-import { ParameterCollection } from '~/core/server/parameter-collection'
+import { ParameterCollection } from '../server/parameter-collection'
 
 export default class Request {
   constructor (
@@ -23,7 +23,7 @@ export default class Request {
 
     this.query = new ParameterCollection(
       this.url
-        ? Object.fromEntries(this.url?.searchParams.entries())
+        ? Object.fromEntries(this.url.searchParams.entries())
         : {}
     )
   }
